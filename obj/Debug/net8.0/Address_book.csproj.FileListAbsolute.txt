@@ -1,0 +1,14 @@
+/home/faheem/PRACTICE/Address_book/bin/Debug/net8.0/Address_book
+/home/faheem/PRACTICE/Address_book/bin/Debug/net8.0/Address_book.deps.json
+/home/faheem/PRACTICE/Address_book/bin/Debug/net8.0/Address_book.runtimeconfig.json
+/home/faheem/PRACTICE/Address_book/bin/Debug/net8.0/Address_book.dll
+/home/faheem/PRACTICE/Address_book/bin/Debug/net8.0/Address_book.pdb
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.GeneratedMSBuildEditorConfig.editorconfig
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.AssemblyInfoInputs.cache
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.AssemblyInfo.cs
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.csproj.CoreCompileInputs.cache
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.dll
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/refint/Address_book.dll
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.pdb
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/Address_book.genruntimeconfig.cache
+/home/faheem/PRACTICE/Address_book/obj/Debug/net8.0/ref/Address_book.dll
