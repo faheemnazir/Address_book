@@ -1,7 +1,31 @@
 using System.Text.RegularExpressions;
 
+
+
+using System;
+using System.Collections.Generic;
 namespace Address_book;
 
+public class Contact
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string ZipCode { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        return FirstName == ((Contact)obj).FirstName;
+    }
+    public override int GetHashCode()
+    {
+        return FirstName.GetHashCode();
+    }
+
+}
 public class MyNumberException : ApplicationException
 {
     public override string Message
@@ -27,6 +51,7 @@ public class MyStringException : ApplicationException
 public class manageContacts
 {
     private List<Contact> contacts;
+    public Dictionary<string, List<string>> person_city_dict = new Dictionary<string, List<string>>();
 
     public manageContacts()
     {
@@ -67,13 +92,28 @@ public class manageContacts
                 throw new MyNumberException();
             Console.WriteLine("Enter Email:");
             newContact.Email = Console.ReadLine();
-            
-            
+
+            /* if (!contacts.Any(person => person.FirstName.Equals(newContact.FirstName, StringComparison.OrdinalIgnoreCase)))
+             {
+                 contacts.Add(newContact);
+                 Console.WriteLine($"{newContact.FirstName} added to the list sucessesfully.");
+             }
+             else
+             {
+                 Console.WriteLine($"{newContact.FirstName} is already in the list. Not adding duplicate.");
+             }*/
+            if (!contacts.Contains(newContact))
+            {
+                contacts.Add(newContact);
+                Console.WriteLine("contact added sucesesfully");
+            }
+            else
+                Console.WriteLine("\ncontact with the name " + newContact.FirstName + " alreday exists");
+
+
         }
         finally
         {
-            contacts.Add(newContact);
-            Console.WriteLine("Contact added successfully!");
         }
         
 
@@ -148,5 +188,51 @@ public class manageContacts
                               $"Email: {contact.Email}");
             Console.WriteLine("---------------------------------------------------------------------------");
         }
+
+
+    }
+
+    public void person_in_same_city()
+    {
+        foreach (var person in contacts)
+        {
+            if (!person_city_dict.ContainsKey(person.City))
+                person_city_dict[person.City] = new List<string>();
+            person_city_dict[person.City].Add(person.FirstName);
+        }
+
+        foreach (var city in person_city_dict)
+        {
+            Console.WriteLine($"City: {city.Key}");
+            foreach (var name in city.Value)
+            {
+                Console.WriteLine($"- {name}");
+            }
+        }
+    }
+    public void check_person_by_city(string city) {
+
+        Console.WriteLine("persons in the city " + city + " are");
+        if (person_city_dict.ContainsKey(city))
+        {
+            foreach (var names in person_city_dict[city])
+                Console.WriteLine(names);
+        }
+        else
+        {
+            Console.WriteLine("city not found enter the valid city");
+
+        }
+    }
+
+    public int GetContactCountByCity(string city)
+    {
+        int count = 0;
+        foreach (var person in contacts)
+        {
+            if (person.City.Equals(city, StringComparison.OrdinalIgnoreCase))
+                count++;
+        }
+        return count;
     }
 }
